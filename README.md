@@ -1,6 +1,6 @@
 # Nick Andres
 
-Principal Engineer | Site Reliability Engineering (SRE) | Operational Intelligence | AI-Powered Operations
+Principal Engineer | Site Reliability Engineering (SRE) | Operational Intelligence | AI-Assisted Operations
 
 For more than 25 years, I've worked on distributed systems, cloud platforms, operational excellence, and engineering productivity.
 
