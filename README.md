@@ -30,7 +30,6 @@ Metrics, logs, traces, incident analysis, root cause investigation, and the syst
 
 ## Current Areas of Study
 
-* OpenTelemetry
 * Agentic Workflows
 * Observability Engineering
 * Engineering Productivity
