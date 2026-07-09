@@ -1,61 +1,39 @@
 # Nick Andres
 
-Principal Engineer | Site Reliability Engineering (SRE) | Operational Intelligence | AI-Assisted Operations
+I use this GitHub profile as a public portfolio for exploring AI-assisted engineering, engineering systems, reliability, architecture discipline, and operational intelligence.
 
-For more than 25 years, I've worked on distributed systems, cloud platforms, operational excellence, and engineering productivity.
+The repositories here are practical concept artifacts: small, documentation-first systems for improving how engineering organizations reason, decide, operate, and learn.
 
-My current interests sit at the intersection of:
+## Current Areas of Exploration
 
-* Observability
-* Operational Intelligence
-* AI-Assisted Engineering
-* Agentic Workflows
-* Engineering Productivity
-* Distributed Systems
-* Human-in-the-Loop AI
+- **AI-Assisted Engineering** - Using AI to improve engineering workflows without replacing human judgment.
+- **Organizational Effectiveness** - Reducing ambiguity and making decisions easier to explain, review, and improve.
+- **Engineering Systems Thinking** - Designing reusable mechanisms instead of isolated one-off tools.
+- **Reliability Engineering** - Capturing operational context, signals, and judgment so teams can respond more effectively.
+- **Architecture Discipline** - Treating architecture intent as structured, reviewable, and durable.
+- **Operational Intelligence** - Combining telemetry, operational knowledge, deployment history, and reasoning to support better decisions.
+- **Product-minded Engineering** - Turning engineering patterns into usable systems with clear boundaries and practical value.
 
-## What I'm Exploring
+## Selected Repositories
 
-### Operational Intelligence
+- **[Architecture-as-Code](https://github.com/nandrespersonal/architecture-as-code)** - Converts architecture intent into structured, reviewable manifests and derived engineering artifacts. It exists to explore whether architecture knowledge can be made easier to validate, diff, document, and keep aligned with reality.
 
-How can we combine telemetry, operational knowledge, deployment history, and AI reasoning to help engineers make better decisions?
+- **[Intelligent Work Intake](https://github.com/nandrespersonal/intelligent-work-intake)** - Explores portfolio-aware work intake and AI-assisted decision support for attention allocation. It exists to help reason about which work deserves focus, what tradeoffs are being made, and how priorities drift over time.
 
-### AI-Assisted Operations
+- **[AI Tool Discovery Gate](https://github.com/nandrespersonal/ai-tool-discovery-gate)** - Prevents AI tool sprawl through federated discovery and evidence-based governance decisions. It exists to help teams decide whether to build, adopt, extend, request, observe, incubate, or stop before investing engineering effort.
 
-I'm interested in systems that help engineers identify anomalies, reduce noise, accelerate diagnostics, and improve operational outcomes.
+- **[Operational Intelligence Patterns](https://github.com/nandrespersonal/operational-intelligence-patterns)** - Captures operational judgment patterns that improve visibility, learning, and decision quality. It exists to explore how experienced engineering judgment can become reusable context for operating complex systems.
 
-### Observability
-
-Metrics, logs, traces, incident analysis, root cause investigation, and the systems that help engineers understand complex distributed environments.
-
-## Current Areas of Study
-
-* Agentic Workflows
-* Observability Engineering
-* Engineering Productivity
-* AI Platform Engineering
-* Operational Memory Systems
-
-## Philosophy
+## Engineering Philosophy
 
 Technology should amplify human expertise, not replace it.
 
-The most effective AI systems are often the ones that capture operational knowledge, reduce cognitive load, and help people make better decisions.
+The systems I am most interested in are practical, explainable, and durable. They improve decision quality, reduce organizational ambiguity, and turn hard-earned engineering judgment into reusable mechanisms.
 
-I'm particularly interested in how expert judgment can be translated into reusable systems that improve reliability, scalability, and operational excellence.
+I prefer systems that make reasoning visible over systems that hide it behind opaque automation. The goal is not to automate every decision; it is to help people make better decisions with better context.
 
+## Portfolio Philosophy
 
-<!--
-**nandrespersonal/nandrespersonal** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+These repositories are intended to be a coherent body of work rather than unrelated experiments.
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Each project explores one aspect of improving engineering organizations through reusable systems, thoughtful architecture, operational learning, and AI-assisted workflows. They are independent concepts, but they share a common interest in making engineering work clearer, more durable, and easier to reason about.
