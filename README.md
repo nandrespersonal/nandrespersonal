@@ -1,28 +1,35 @@
 # Nick Andres
 
-I use this GitHub profile as a public portfolio for exploring AI-assisted engineering, engineering systems, reliability, architecture discipline, and operational intelligence.
+I build practical, human-guided systems for AI-assisted engineering, reliability, operational intelligence, and organizational decision-making.
 
-The repositories here are practical concept artifacts: small, documentation-first systems for improving how engineering organizations reason, decide, operate, and learn.
+My projects explore how engineering teams can turn scattered context, workflows, and expert judgment into durable operating mechanisms. The goal is not automation for its own sake. It is better decisions, lower coordination friction, stronger accountability, and systems that improve through repeated use.
 
-## Current Areas of Exploration
+## Portfolio Thesis
 
-- **AI-Assisted Engineering** - Using AI to improve engineering workflows without replacing human judgment.
-- **Organizational Effectiveness** - Reducing ambiguity and making decisions easier to explain, review, and improve.
-- **Engineering Systems Thinking** - Designing reusable mechanisms instead of isolated one-off tools.
-- **Reliability Engineering** - Capturing operational context, signals, and judgment so teams can respond more effectively.
-- **Architecture Discipline** - Treating architecture intent as structured, reviewable, and durable.
-- **Operational Intelligence** - Combining telemetry, operational knowledge, deployment history, and reasoning to support better decisions.
-- **Product-minded Engineering** - Turning engineering patterns into usable systems with clear boundaries and practical value.
+The strongest AI leverage does not come from adding a model to an unchanged process. It comes from redesigning how work is selected, grounded, executed, validated, learned from, and converted into reusable organizational capability.
+
+Across the portfolio, I focus on:
+
+- preserving human judgment and accountability;
+- making engineering reasoning visible and reviewable;
+- reducing ambiguity and coordination friction;
+- converting repeated work into reusable mechanisms;
+- connecting AI adoption to reliability and operational discipline;
+- building systems that remain useful as models and tools change.
 
 ## Selected Repositories
 
-- **[Architecture-as-Code](https://github.com/nandrespersonal/architecture-as-code)** - Converts architecture intent into structured, reviewable manifests and derived engineering artifacts. It exists to explore whether architecture knowledge can be made easier to validate, diff, document, and keep aligned with reality.
+- **[Harness Engineering](https://github.com/nandrespersonal/HarnessEngineering)** - A practice for turning human judgment, workflows, tools, guardrails, and feedback into AI-supported learning loops that compound over time.
 
-- **[Intelligent Work Intake](https://github.com/nandrespersonal/intelligent-work-intake)** - Explores portfolio-aware work intake and AI-assisted decision support for attention allocation. It exists to help reason about which work deserves focus, what tradeoffs are being made, and how priorities drift over time.
+- **[Intelligent Work Intake](https://github.com/nandrespersonal/intelligent-work-intake)** - A portfolio-aware decision-support model for determining which incoming work deserves attention and which durable capability should handle it.
 
-- **[AI Tool Discovery Gate](https://github.com/nandrespersonal/ai-tool-discovery-gate)** - Prevents AI tool sprawl through federated discovery and evidence-based governance decisions. It exists to help teams decide whether to build, adopt, extend, request, observe, incubate, or stop before investing engineering effort.
+- **[AI-Assisted Task Orchestration](https://github.com/nandrespersonal/ai-assisted-task-orchestration)** - A reusable operating model for moving complex work from ambiguity through evidence, decisions, execution, validation, follow-up, and captured learning.
 
-- **[Operational Intelligence Patterns](https://github.com/nandrespersonal/operational-intelligence-patterns)** - Captures operational judgment patterns that improve visibility, learning, and decision quality. It exists to explore how experienced engineering judgment can become reusable context for operating complex systems.
+- **[Engineering Signal Engine](https://github.com/nandrespersonal/engineering-signal-engine)** - A structured approach for turning engineering work, feedback, and operational outcomes into durable, reviewable career signals.
+
+- **[Operational Intelligence Patterns](https://github.com/nandrespersonal/operational-intelligence-patterns)** - A pattern library for making operational context, experience, and engineering judgment more reusable.
+
+- **[Architecture-as-Code](https://github.com/nandrespersonal/architecture-as-code)** - An exploration of architecture intent as structured, reviewable, versioned, and potentially validated engineering data.
 
 ## Engineering Philosophy
 
