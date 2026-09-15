@@ -43,8 +43,8 @@ Do not assume a repo is incomplete just because it has no code, tests, or packag
 | Type | Repos |
 | --- | --- |
 | Runnable tools | `voice-proxy-for-copilot-cli`, `copilot-cli-doctor` |
-| Tooling/plugin packages | `clipboard-helper`, `session-learnings-coach`, `power-automate-flow-troubleshooter`, `firsow-fo-sho` |
-| Concept/model | `DreamingBig`, `ai-tool-discovery-gate`, `intelligent-work-intake`, `ai-assisted-task-orchestration`, `ai-tool-course-correction`, `operational-intelligence-patterns`, `HarnessEngineering`, `architecture-as-code` family |
+| Tooling/plugin packages | `clipboard-helper`, `session-learnings-coach`, `power-automate-flow-troubleshooter`, `firsow-fo-sho`, `chief-of-staff` |
+| Concept/model | `DreamingBig`, `ai-tool-discovery-gate`, `intelligent-work-intake`, `ai-assisted-task-orchestration`, `ai-tool-course-correction`, `operational-intelligence-patterns`, `HarnessEngineering`, `loop-engineering`, `personal-secretary`, `architecture-as-code` family |
 | Context/grounding | `ContextStewardAgent`, `MelFryeOrg-Context`, `scout-opportunity-companion` |
 | Portfolio/signal | `nandrespersonal`, `career-operating-system`, `engineering-signal-engine` |
 
