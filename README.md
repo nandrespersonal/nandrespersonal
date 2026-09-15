@@ -42,7 +42,7 @@ Do not assume a repo is incomplete just because it has no code, tests, or packag
 
 | Type | Repos |
 | --- | --- |
-| Runnable tools | `voice-proxy-for-copilot-cli`, `copilot-cli-doctor` |
+| Runnable tools | `copilot-cli-doctor` |
 | Tooling/plugin packages | `clipboard-helper`, `session-learnings-coach`, `power-automate-flow-troubleshooter`, `firsow-fo-sho`, `chief-of-staff` |
 | Concept/model | `DreamingBig`, `ai-tool-discovery-gate`, `intelligent-work-intake`, `ai-assisted-task-orchestration`, `ai-tool-course-correction`, `operational-intelligence-patterns`, `HarnessEngineering`, `loop-engineering`, `personal-secretary`, `architecture-as-code` family |
 | Context/grounding | `ContextStewardAgent`, `MelFryeOrg-Context`, `scout-opportunity-companion` |
@@ -52,7 +52,6 @@ The `architecture-as-code` family refers to related local explorations of archit
 
 ### Working Tools
 
-- **Voice Proxy for Copilot CLI** - A local push-to-talk voice input layer for Copilot CLI workflows, focused on privacy-preserving transcription, technical dictation, and controlled paste/submit behavior.
 - **Copilot CLI Doctor** - A startup and environment diagnostic tool for making local Copilot CLI sessions more reliable.
 
 ### Tooling and Plugin Packages
@@ -96,7 +95,7 @@ The repositories are independent local projects, but they are meant to reinforce
 - **AI Tool Discovery Gate -> Intelligent Work Intake -> AI-Assisted Task Orchestration**: tool decisions connect to portfolio-aware intake, which then connects to how agentic work is planned, sequenced, checked, and completed.
 - **Context Steward Agent -> MelFryeOrg-Context -> Scout Opportunity Companion**: context stewardship defines how to handle durable knowledge safely, the org-context repo applies that pattern to operational knowledge, and Scout evaluates opportunities using grounded context.
 - **Operational Intelligence Patterns -> Engineering Signal Engine -> Career Operating System**: operational judgment patterns become evidence of engineering impact, and that evidence can feed career strategy and storytelling when explicitly intended.
-- **Copilot CLI Doctor -> Voice Proxy for Copilot CLI -> Clipboard Helper -> Session Learnings Coach**: these are local workflow tools that improve the day-to-day Copilot CLI operating loop: environment health, input speed, output movement, and session learning.
+- **Copilot CLI Doctor -> Clipboard Helper -> Session Learnings Coach**: these are local workflow tools that improve the day-to-day Copilot CLI operating loop: environment health, output movement, and session learning.
 - **Architecture-as-Code family -> Operational Intelligence Patterns -> Harness Engineering**: structured architecture intent, operational reasoning, and feedback-loop design all support the same goal: making engineering judgment easier to inspect, improve, and reuse.
 
 These links are descriptive, not ownership or sync rules. Each repo can remain useful on its own.
