@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "nandrespersonal-private-staging-registry",
+  "generated_at": "2026-09-16T20:15:00Z",
+  "source_safe": true,
+  "capabilities": [
+    {
+      "id": "powershell-runtime",
+      "name": "PowerShell runtime",
+      "capability_type": "script_or_tool",
+      "owner": {
+        "kind": "platform",
+        "identifier": "local Windows environment"
+      },
+      "summary": "Runs deterministic local inventory, validation, and file-management commands.",
+      "inspectability": {
+        "level": "full",
+        "evidence_refs": [
+          "plans/2026/09/private-repository-staging-project-plan.md"
+        ]
+      },
+      "trust": {
+        "source": "platform_builtin",
+        "source_ref": "local Windows environment",
+        "security_review_status": "not_required",
+        "approval_status": "approved"
+      },
+      "lifecycle": {
+        "status": "active",
+        "review_date": "2027-03-16",
+        "retirement_trigger": "Retire when the supported local execution environment no longer provides PowerShell."
+      },
+      "authority": {
+        "execution": "local_write",
+        "data_access": "Explicitly selected local repository metadata and tracked files.",
+        "persistence": "none",
+        "human_review_required": true
+      },
+      "evidence_refs": [
+        "publishing/README.md"
+      ],
+      "dependencies": []
+    },
+    {
+      "id": "git-command-line",
+      "name": "Git command line",
+      "capability_type": "script_or_tool",
+      "owner": {
+        "kind": "platform",
+        "identifier": "local Git installation"
+      },
+      "summary": "Reads repository metadata and exports tracked commit snapshots.",
+      "inspectability": {
+        "level": "full",
+        "evidence_refs": [
+          "publishing/README.md"
+        ]
+      },
+      "trust": {
+        "source": "platform_builtin",
+        "source_ref": "local Git installation",
+        "security_review_status": "not_required",
+        "approval_status": "approved"
+      },
+      "lifecycle": {
+        "status": "active",
+        "review_date": "2027-03-16",
+        "retirement_trigger": "Retire when the staging workflow no longer uses Git repositories."
+      },
+      "authority": {
+        "execution": "read_only",
+        "data_access": "Git metadata and tracked files in explicitly selected local repositories.",
+        "persistence": "none",
+        "human_review_required": true
+      },
+      "evidence_refs": [
+        "plans/2026/09/private-repository-staging-project-plan.md"
+      ],
+      "dependencies": []
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "agent_exception": {
+    "agent_first_creation": false,
+    "criteria": {
+      "multi_step_orchestration": false,
+      "role_identity_or_continuity": false,
+      "specialized_judgment": false,
+      "sustained_autonomy": false
+    },
+    "nick_approval": {
+      "evidence_refs": [],
+      "status": "not_required"
+    },
+    "rationale": "No agent capability is required."
+  },
+  "audit": {
+    "evidence_mode": "write_once_hash_chain",
+    "supersedes_decision_id": null
+  },
+  "boundaries": {
+    "human_review": "Nick retains per-repository authority for ownership classification and any later private publication.",
+    "privacy": "Machine-specific inventory and staged source remain ignored local state; committed artifacts contain only source-safe policy and synthetic examples.",
+    "rollback": "Delete ignored staging state and stop using the script; source repositories are unchanged.",
+    "safety": "No GitHub repository creation, push, deletion, force update, visibility change, or source-repository mutation is authorized in this implementation slice."
+  },
+  "capability_change": {
+    "action": "create",
+    "requested": true,
+    "target_name": "Private repository staging script"
+  },
+  "chosen_level": "deterministic_primitive",
+  "decision_id": "private-repository-staging-2026-09-16",
+  "definition_of_done": [
+    "The workflow inventories local Git repositories without reading or storing source contents.",
+    "Approved repositories can be exported from tracked HEAD into an isolated staging directory.",
+    "Validation fails closed on unresolved approval, sensitive paths, secret-like content, large files, submodules, or Git LFS pointers.",
+    "Tests prove source repositories remain unchanged."
+  ],
+  "durable_owner": {
+    "accountability": "Own the source-safe publishing policy, deterministic staging implementation, and verification evidence.",
+    "identifier": "nandrespersonal",
+    "kind": "repository"
+  },
+  "factors": {
+    "recurrence": "recurring",
+    "reversibility": "easy",
+    "strategic_value": "high"
+  },
+  "gap_evidence": [
+    {
+      "evidence_refs": [
+        "plans/2026/09/private-repository-staging-project-plan.md"
+      ],
+      "gap": "No existing local capability combines metadata-only inventory, explicit approval state, isolated tracked-HEAD export, and fail-closed validation."
+    }
+  ],
+  "inventory": {
+    "entries": [
+      {
+        "capability_id": "powershell-runtime",
+        "disposition": "insufficient",
+        "evidence_refs": [
+          "publishing/README.md"
+        ],
+        "rationale": "PowerShell provides execution primitives but not the required repository approval, staging, and validation contract.",
+        "sufficient": false
+      },
+      {
+        "capability_id": "git-command-line",
+        "disposition": "insufficient",
+        "evidence_refs": [
+          "plans/2026/09/private-repository-staging-project-plan.md"
+        ],
+        "rationale": "Git can export a tracked snapshot but does not enforce local state isolation or source-safety policy.",
+        "sufficient": false
+      }
+    ],
+    "evaluated_at": "2026-09-16T20:15:00Z",
+    "registry_id": "nandrespersonal-private-staging-registry"
+  },
+  "lower_level_evaluations": [
+    {
+      "evidence_refs": [
+        "publishing/README.md"
+      ],
+      "level": "reuse_existing",
+      "rationale": "Available commands provide individual primitives but no complete policy-enforcing workflow.",
+      "result": "insufficient"
+    },
+    {
+      "evidence_refs": [
+        "plans/2026/09/private-repository-staging-project-plan.md"
+      ],
+      "level": "deterministic_primitive",
+      "rationale": "A small inspectable script can enforce the required local-only workflow without a skill, agent, or orchestration system.",
+      "result": "sufficient"
+    }
+  ],
+  "multi_agent_justification": null,
+  "outcome": "Create a deterministic local-only workflow for inventorying and validating tracked repository snapshots without modifying source repositories or publishing remotely.",
+  "recorded_at": "2026-09-16T20:15:00Z",
+  "retirement_trigger": "Retire when the publication need ends or a narrower trusted platform feature provides equivalent isolation and verification.",
+  "review_date": "2027-03-16",
+  "risks": {
+    "capability_steamroll": {
+      "mitigation": "Retire the script if GitHub or the local platform provides equivalent policy-enforced staging.",
+      "rating": "low",
+      "rationale": "The durable value is the repository-specific safety contract and evidence, not a complex implementation."
+    },
+    "initiative_collision": {
+      "mitigation": "Keep the implementation narrow and reuse Git and PowerShell rather than creating a broader platform.",
+      "rating": "medium",
+      "rationale": "Existing repository and automation features provide pieces of the workflow but not the required personal publishing boundary."
+    }
+  },
+  "schema_version": "1.0.0",
+  "status": "approved",
+  "third_party": {
+    "candidates_present": false,
+    "discovery_is_approval": false,
+    "intended_action": "none",
+    "nick_approval": {
+      "evidence_refs": [],
+      "status": "not_required"
+    },
+    "security_review": {
+      "evidence_refs": [],
+      "status": "not_required"
+    }
+  },
+  "verification_evidence": [
+    {
+      "claim": "The deterministic evaluator must return allow before implementation.",
+      "evidence_refs": [
+        "publishing/governance/private-staging-capability-decision.json"
+      ]
+    },
+    {
+      "claim": "Fixture tests must prove source repositories remain unchanged.",
+      "evidence_refs": [
+        "publishing/tests/Invoke-PrivateRepoStaging.Tests.ps1"
+      ]
+    }
+  ]
+}
