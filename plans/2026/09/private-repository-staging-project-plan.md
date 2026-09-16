@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 implemented and validated: metadata inventory, local approval state, tracked snapshot export, locking, and fail-closed validation. No GitHub repository creation or source-code upload is authorized by this plan.
+Phases 1 and 2 implemented and validated: metadata inventory, local approval state, tracked snapshot export, snapshot-only identity abstraction, locking, and fail-closed validation. No GitHub repository creation or source-code upload is authorized by this plan.
 
 ## Intake
 
@@ -30,10 +30,11 @@ Use a deterministic PowerShell workflow owned by this repository:
 2. Store machine-specific inventory only in an ignored local state directory.
 3. Require an explicit per-repository decision before staging or publishing.
 4. Export the tracked `HEAD` snapshot into a separate staging directory; do not copy `.git`, untracked files, local configuration, or original history.
-5. Run source-safety checks against the staged snapshot.
-6. Publish only approved snapshots to private `nandrespersonal/staging-<slug>` repositories.
-7. Use a dedicated personal GitHub CLI profile and a command-local Git credential helper.
-8. Verify the remote repository is private and its remote SHA equals the staged commit.
+5. Apply explicitly approved identity transformations only to the staged snapshot and record file-level replacement counts.
+6. Run source-safety checks against the staged snapshot and block any remaining corporate identity reference.
+7. Publish only approved snapshots to private `nandrespersonal/staging-<slug>` repositories.
+8. Use a dedicated personal GitHub CLI profile and a command-local Git credential helper.
+9. Verify the remote repository is private and its remote SHA equals the staged commit.
 
 ### Fallback path
 
@@ -100,4 +101,4 @@ Nick decides whether an approved staging repository should later replace, merge 
 
 ## Next action
 
-Review the ignored local inventory, approve one source-safe repository for staging, and run the first real local snapshot pilot. Do not create additional GitHub repositories until that pilot report is reviewed.
+Review the ignored local inventory, approve one source-safe repository and its transformation rules, and run the first real local snapshot pilot. Do not create additional GitHub repositories until that pilot report is reviewed.

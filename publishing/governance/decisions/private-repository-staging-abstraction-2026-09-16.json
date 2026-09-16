@@ -1,0 +1,131 @@
+{
+  "agent_exception": {
+    "agent_first_creation": false,
+    "criteria": {
+      "multi_step_orchestration": false,
+      "role_identity_or_continuity": false,
+      "specialized_judgment": false,
+      "sustained_autonomy": false
+    },
+    "nick_approval": {
+      "evidence_refs": [],
+      "status": "not_required"
+    },
+    "rationale": "No agent exception is needed."
+  },
+  "audit": {
+    "evidence_mode": "write_once_hash_chain",
+    "supersedes_decision_id": null
+  },
+  "boundaries": {
+    "human_review": "Nick approves content transformation per repository before staging.",
+    "privacy": "Transformation reports remain ignored local state and contain paths and counts, not copied source content.",
+    "rollback": "Delete the generated snapshot and report; the source repository remains unchanged.",
+    "safety": "Transformations may modify only exported staging snapshots. No source or remote mutation is authorized."
+  },
+  "capability_change": {
+    "action": "extend",
+    "requested": true,
+    "target_name": "Private repository staging script"
+  },
+  "chosen_level": "reuse_existing",
+  "decision_id": "private-repository-staging-abstraction-2026-09-16",
+  "definition_of_done": [
+    "Transformations run only inside an isolated exported snapshot.",
+    "Each repository requires explicit content transformation approval.",
+    "Every replacement is recorded with file path and replacement count.",
+    "Any remaining nandres_microsoft reference blocks the snapshot.",
+    "Fixture tests prove source content and Git state remain unchanged."
+  ],
+  "durable_owner": {
+    "accountability": "Own transformation defaults, per-repository approval rules, audit evidence, and remaining-reference validation.",
+    "identifier": "nandrespersonal",
+    "kind": "repository"
+  },
+  "factors": {
+    "recurrence": "recurring",
+    "reversibility": "easy",
+    "strategic_value": "high"
+  },
+  "gap_evidence": [],
+  "inventory": {
+    "entries": [
+      {
+        "capability_id": "powershell-runtime",
+        "disposition": "combine",
+        "evidence_refs": [
+          "publishing/Invoke-PrivateRepoStaging.ps1"
+        ],
+        "rationale": "PowerShell provides deterministic text replacement and audit generation inside the already isolated staging snapshot.",
+        "sufficient": true
+      },
+      {
+        "capability_id": "git-command-line",
+        "disposition": "combine",
+        "evidence_refs": [
+          "publishing/Invoke-PrivateRepoStaging.ps1"
+        ],
+        "rationale": "Git archive continues to provide the immutable source snapshot boundary before transformations run.",
+        "sufficient": true
+      }
+    ],
+    "evaluated_at": "2026-09-16T23:08:00Z",
+    "registry_id": "nandrespersonal-private-staging-registry"
+  },
+  "lower_level_evaluations": [
+    {
+      "evidence_refs": [
+        "publishing/governance/decisions/private-repository-staging-2026-09-16.json"
+      ],
+      "level": "reuse_existing",
+      "rationale": "The existing deterministic staging primitive can be narrowly extended using its current PowerShell and Git capabilities.",
+      "result": "sufficient"
+    }
+  ],
+  "multi_agent_justification": null,
+  "outcome": "Extend the deterministic staging workflow with explicit snapshot-only content transformations that remove corporate GitHub owner references without modifying source repositories.",
+  "recorded_at": "2026-09-16T23:08:00Z",
+  "retirement_trigger": "Retire when source repositories no longer need identity abstraction or a narrower trusted platform capability replaces it.",
+  "review_date": "2027-03-16",
+  "risks": {
+    "capability_steamroll": {
+      "mitigation": "Retire when a trusted publication platform provides equivalent snapshot transformation and audit controls.",
+      "rating": "low",
+      "rationale": "The extension is a small repository-specific policy layer over standard text and Git primitives."
+    },
+    "initiative_collision": {
+      "mitigation": "Keep repository-specific transformations declarative and avoid adding workflow orchestration.",
+      "rating": "low",
+      "rationale": "The extension remains inside the existing staging primitive rather than creating a new capability."
+    }
+  },
+  "schema_version": "1.0.0",
+  "status": "approved",
+  "third_party": {
+    "candidates_present": false,
+    "discovery_is_approval": false,
+    "intended_action": "none",
+    "nick_approval": {
+      "evidence_refs": [],
+      "status": "not_required"
+    },
+    "security_review": {
+      "evidence_refs": [],
+      "status": "not_required"
+    }
+  },
+  "verification_evidence": [
+    {
+      "claim": "Tests must prove that source files and Git state are unchanged after snapshot transformation.",
+      "evidence_refs": [
+        "publishing/tests/Invoke-PrivateRepoStaging.Tests.ps1"
+      ]
+    },
+    {
+      "claim": "Snapshots with unresolved corporate owner references must be blocked.",
+      "evidence_refs": [
+        "publishing/tests/Invoke-PrivateRepoStaging.Tests.ps1"
+      ]
+    }
+  ]
+}

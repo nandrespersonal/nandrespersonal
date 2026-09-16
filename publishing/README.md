@@ -70,6 +70,7 @@ Review `publishing\state\repositories.json`, then explicitly change an entry to:
   "decision": "stage_approved",
   "ownershipApproved": true,
   "stageApproved": true,
+  "contentTransformApproved": true,
   "publishApproved": false
 }
 ```
@@ -82,7 +83,9 @@ Create and validate a tracked snapshot:
   -RepositoryName "approved-repository"
 ```
 
-The script currently contains **no GitHub repository creation or push path**. It inventories metadata, exports `HEAD` with `git archive`, validates the isolated snapshot, writes an ignored report, and confirms that the source repository remained unchanged.
+The script currently contains **no GitHub repository creation or push path**. It inventories metadata, exports `HEAD` with `git archive`, applies explicitly approved transformations only inside the isolated snapshot, validates it, writes an ignored report, and confirms that the source repository remained unchanged.
+
+Each inventory entry includes default rules for GitHub HTTPS and SSH owner URLs. Additional exact replacements may be added to `contentTransforms` when a repository contains safe-to-transform bare owner names, package coordinates, badges, or documentation references. Every replacement is recorded by file path and count. Transformation reports do not store the original file content.
 
 Validation blocks:
 
@@ -95,4 +98,5 @@ Validation blocks:
 - files larger than 50 MB;
 - submodules;
 - Git LFS pointers;
+- any remaining `nandres_microsoft` reference after approved transformations;
 - staged file lists that differ from the tracked source snapshot.

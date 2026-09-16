@@ -117,7 +117,20 @@ function Get-RepositoryInventory {
             decision = 'review_required'
             ownershipApproved = $false
             stageApproved = $false
+            contentTransformApproved = $false
             publishApproved = $false
+            contentTransforms = @(
+                [ordered]@{
+                    from = 'https://github.com/nandres_microsoft/'
+                    to = 'https://github.com/nandrespersonal/'
+                    rationale = 'Rewrite GitHub HTTPS owner references in the isolated snapshot.'
+                },
+                [ordered]@{
+                    from = 'git@github.com:nandres_microsoft/'
+                    to = 'git@github.com:nandrespersonal/'
+                    rationale = 'Rewrite GitHub SSH owner references in the isolated snapshot.'
+                }
+            )
             reviewNotes = ''
         }
     }
@@ -128,6 +141,96 @@ function Get-RepositoryInventory {
         localRoot = $resolvedRoot
         repositories = @($repositories)
     }
+}
+
+function Get-TransformableFiles {
+    param([Parameter(Mandatory)][string]$Root)
+
+    $textExtensions = @(
+        '',
+        '.config',
+        '.cs',
+        '.csproj',
+        '.css',
+        '.go',
+        '.html',
+        '.ini',
+        '.java',
+        '.js',
+        '.json',
+        '.jsx',
+        '.md',
+        '.props',
+        '.ps1',
+        '.psd1',
+        '.psm1',
+        '.py',
+        '.rb',
+        '.rs',
+        '.sh',
+        '.sln',
+        '.sql',
+        '.targets',
+        '.toml',
+        '.ts',
+        '.tsx',
+        '.txt',
+        '.xml',
+        '.yaml',
+        '.yml'
+    )
+
+    return @(
+        Get-ChildItem -LiteralPath $Root -File -Recurse |
+            Where-Object { $_.Length -le 2MB -and $textExtensions -contains $_.Extension.ToLowerInvariant() }
+    )
+}
+
+function Invoke-SnapshotTransforms {
+    param(
+        [Parameter(Mandatory)][string]$Root,
+        [Parameter(Mandatory)][object[]]$Transforms
+    )
+
+    $audit = [System.Collections.Generic.List[object]]::new()
+    $files = @(Get-TransformableFiles -Root $Root)
+
+    foreach ($transform in $Transforms) {
+        $from = "$($transform.from)"
+        $to = "$($transform.to)"
+        if ([string]::IsNullOrEmpty($from)) {
+            throw 'Content transformation source text cannot be empty.'
+        }
+        if ($from -ceq $to) {
+            throw "Content transformation '$from' has identical source and destination values."
+        }
+
+        foreach ($file in $files) {
+            $content = Get-Content -LiteralPath $file.FullName -Raw -ErrorAction SilentlyContinue
+            if ($null -eq $content -or -not $content.Contains($from, [StringComparison]::Ordinal)) {
+                continue
+            }
+
+            $count = 0
+            $offset = 0
+            while (($offset = $content.IndexOf($from, $offset, [StringComparison]::Ordinal)) -ge 0) {
+                $count++
+                $offset += $from.Length
+            }
+
+            $updated = $content.Replace($from, $to, [StringComparison]::Ordinal)
+            Set-Content -LiteralPath $file.FullName -Value $updated -Encoding utf8 -NoNewline
+            $audit.Add([ordered]@{
+                path = [IO.Path]::GetRelativePath($Root, $file.FullName).Replace('\', '/')
+                from = $from
+                to = $to
+                replacements = $count
+                rationale = "$($transform.rationale)"
+            })
+        }
+    }
+
+    return @($audit)
 }
 
 function Get-StagedFindings {
@@ -179,11 +282,12 @@ function Get-StagedFindings {
 
         if ($file.Length -le 2MB) {
             $extension = $file.Extension.ToLowerInvariant()
-            $textExtensions = @('', '.config', '.cs', '.env', '.ini', '.js', '.json', '.md', '.ps1', '.psm1', '.py', '.toml', '.ts', '.txt', '.xml', '.yaml', '.yml')
+            $textExtensions = @('', '.config', '.cs', '.csproj', '.css', '.env', '.go', '.html', '.ini', '.java', '.js', '.json', '.jsx', '.md', '.props', '.ps1', '.psd1', '.psm1', '.py', '.rb', '.rs', '.sh', '.sln', '.sql', '.targets', '.toml', '.ts', '.tsx', '.txt', '.xml', '.yaml', '.yml')
             if ($textExtensions -contains $extension) {
                 $content = Get-Content -LiteralPath $file.FullName -Raw -ErrorAction SilentlyContinue
                 if ($null -ne $content) {
                     $checks = @(
+                        @{ Type = 'corporate_identity_reference'; Pattern = '(?i)nandres_microsoft'; Detail = 'Unresolved corporate GitHub identity reference detected.' },
                         @{ Type = 'private_key'; Pattern = '-----BEGIN (RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----'; Detail = 'Private-key material detected.' },
                         @{ Type = 'github_token'; Pattern = 'gh[pousr]_[A-Za-z0-9]{20,}'; Detail = 'GitHub token-like value detected.' },
                         @{ Type = 'aws_access_key'; Pattern = 'AKIA[0-9A-Z]{16}'; Detail = 'AWS access-key-like value detected.' },
@@ -285,6 +389,9 @@ try {
             if (-not $entry.ownershipApproved -or -not $entry.stageApproved -or $entry.decision -notin @('stage_approved', 'publish_approved')) {
                 throw "Repository '$RepositoryName' is not approved for staging."
             }
+            if (-not $entry.contentTransformApproved) {
+                throw "Repository '$RepositoryName' is not approved for content transformation."
+            }
             if ($entry.visibility -ne 'private') {
                 throw "Repository '$RepositoryName' does not declare private visibility."
             }
@@ -320,6 +427,8 @@ try {
             }
             Remove-Item -LiteralPath $archivePath
 
+            $transformAudit = @(Invoke-SnapshotTransforms -Root $snapshotPath -Transforms @($entry.contentTransforms))
+
             $headAfterOutput = @(Invoke-Git -RepositoryPath $sourcePath -GitArguments @('rev-parse', 'HEAD'))
             $headAfter = $headAfterOutput[0]
             $statusAfter = @(& git -C $sourcePath status --porcelain)
@@ -338,6 +447,7 @@ try {
                 visibility = $entry.visibility
                 snapshotPath = $snapshotPath
                 sourceUnchanged = $true
+                transformations = $transformAudit
                 validation = $validation
             }
             $reportPath = Join-Path (Join-Path $StateRoot 'reports') "$($RepositoryName)-$timestamp.json"

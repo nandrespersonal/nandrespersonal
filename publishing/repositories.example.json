@@ -16,7 +16,20 @@
       "decision": "review_required",
       "ownershipApproved": false,
       "stageApproved": false,
+      "contentTransformApproved": false,
       "publishApproved": false,
+      "contentTransforms": [
+        {
+          "from": "https://github.com/nandres_microsoft/",
+          "to": "https://github.com/nandrespersonal/",
+          "rationale": "Rewrite GitHub HTTPS owner references in the isolated snapshot."
+        },
+        {
+          "from": "git@github.com:nandres_microsoft/",
+          "to": "git@github.com:nandrespersonal/",
+          "rationale": "Rewrite GitHub SSH owner references in the isolated snapshot."
+        }
+      ],
       "reviewNotes": ""
     }
   ]
